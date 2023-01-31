@@ -9,32 +9,39 @@
 ## Use an appropriate variable name for the scores
 ## 
 ## Hint: feel free to invent if you cannot figure this out
-
+seahawks <- c(17, 7, 23, 48, 32)
+seahawks
 
 ## Create a vector of the number of points the opponent
 ## scored against Seahawks in the first 5 games
 ## use an appropriate variable name
-
+opponents <- c(16, 27, 27, 45, 39)
+opponents
 
 ## Combine your two vectors into a dataframe
-
+football <- data.frame(seahawks, opponents)
+football
 
 ## Create a new column "diff" that is the difference in points
 ## (in favor of Hawks)
-
+football$diff <- seahawks - opponents
+football
 
 ## Create a new column "won" which is TRUE if the Seahawks won,
 ## ie if Seahawks scored more than the opponent scored against them
-
+football$won <- diff > 0
+football
 
 ## Create a vector of the opponents name (such as "Denver Broncos")
-
+opponentsname <- c("Denver Broncos", "San Francisco 49ers", "Atlanta Falcons", "Detroit Lions", "New Orleans Saints")
+opponentsname
 
 ## Add the vector of opponents into the data frame
-
+football$"opponents names" <- opponentsname
+football
 
 ## Compute the average score of Seahawks
-
+mean(seahawks)
 
 ## Compute how many games did Seahawks won
 ## (use the 'won' variable to compute it)
