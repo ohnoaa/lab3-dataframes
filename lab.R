@@ -100,48 +100,55 @@ for (each in names(football)) {
 ## Create a vector of 100 employees ("Employee 1", "Employee 2", ... "Employee
 ## 100")
 ## Hint: use 'paste()` or `str_c`
-
+employees <- paste("Employee", 1:100)
+employees
 
 ## Create a random vector of their 2021 salaries.
 ## Hint: you may use the runif function to create uniform random numbers,
 ## e.g. 'runif(100, 60, 120)' creates 100 random numbers between 60 and 120
-
+salaries_2021 <- runif(100, 60, 120)
+salaries_2021
 
 ## Create a random vector of 2022 salaries that are typically
-## higher than the 2014 salaires (use runif again).
+## higher than the 2021 salaires (use runif again).
 ## For instance, if you create random numbers between 65 and 130, then 2022
 ## salaries tend to be larger than 2021 salaries.
-
+salaries_2022 <- runif(100, 70, 150)
+salaries_2022
 
 ## Create a data.frame 'salaries' by combining the vectors you just made
-
+salaries <- data.frame(employees, salaries_2021, salaries_2022)
+salaries
 
 ## Create a column 'raise' that stores the size of the
 ## raise between 2021 and 2022
-
+salaries$raise <- salaries_2022 - salaries_2021
+salaries
 
 ## Retrieve values from your data frame to answer the following questions:
 ##
-## What was the 2015 salary of employee 57
-
+## What was the 2022 salary of employee 57
+salaries[57, "salaries_2022"]
 
 ## Now round the answer down to two digits after comma
 ## check out 'round()' function
-
+round(salaries[57, "salaries_2022"], 2)
 
 ## How many employees got a raise?
-
+sum(salaries$raise > 0)
 
 ## What was the value of the highest raise?
 ## Round the number to two digits!
+highest <- max(salaries$raise)
+round(max(salaries$raise), 2)
 
-
-## What was the name of the employee who recieved the highest raise?
-
+## What was the name of the employee who received the highest raise?
+salaries$employees[salaries$raise == highest]
 
 ## What was the average salary increase?
 ## Round the number!
-
+round(mean(salaries$raise), 2)
 
 ## For people who did not get a raise, how much money did they lose?
 ## Round the number!
+sum(salaries$raise < 0)
