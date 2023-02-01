@@ -24,12 +24,13 @@ football
 
 ## Create a new column "diff" that is the difference in points
 ## (in favor of Hawks)
+##Dollar-sign method:
 football$diff <- seahawks - opponents
 football
 
 ## Create a new column "won" which is TRUE if the Seahawks won,
 ## ie if Seahawks scored more than the opponent scored against them
-football$won <- diff > 0
+football$won <- football$diff > 0
 football
 
 ## Create a vector of the opponents name (such as "Denver Broncos")
@@ -41,37 +42,55 @@ football$"opponents names" <- opponentsname
 football
 
 ## Compute the average score of Seahawks
-mean(seahawks)
+mean(football$seahawks)
+
 
 ## Compute how many games did Seahawks won
 ## (use the 'won' variable to compute it)
-
+## Sum function only returns the true statements
+sum(football$won)
 
 ## What was the largest difference in scores (in favor of Seahawks)?
-
+## Max function is the greatest value
+max(football$diff)
 
 ## How many different opponents did Seahawks have in these games?
-## Hint: use `unique()` and `length()`
-
+## Hint: use `unique()` and `length()
+## By putting a question mark before the function, RStudio will give you more information
+## Length function tells you how many vectors
+length(unique(football$`opponents names`))
 
 ## Print the variable names in your data frame
-
+names(football)
 
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop
-
+## Make sure to do the names, not just football
+for (each in names(football)) {
+  cat(each, "\n")
+}
 
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop,
 ## and true/false, depending if the variable is numeric
 ## check out 'is.numeric()'
-
+for (each in names(football)) {
+  cat(each, "\n")
+  if (is.numeric(football[[each]])) {
+    cat(is.numeric(football[[each]]), "The variable is numeric:", football[[each]], "\n")
+  }
+}
 
 ## Write a loop over all variables in your data frame
 ## print the variable name inside the loop,
 ## and the average value of the variable
 ## if the variable is numeric
-
+for (each in names(football)) {
+  cat(each, "\n")
+  if (is.numeric(football[[each]])) {
+    cat(mean(football[[each]]), "\n")
+  }
+}
 
 ##
 ## HR data
