@@ -151,4 +151,6 @@ round(mean(salaries$raise), 2)
 
 ## For people who did not get a raise, how much money did they lose?
 ## Round the number!
-sum(salaries$raise < 0)
+## Need to find the values of the negative raises WITHIN all of the raises
+negativeraise <- salaries$raise[salaries$raise < 0]
+round(mean(negativeraise), 2)
